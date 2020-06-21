@@ -210,7 +210,7 @@ class HandlerTest {
         HttpRequest request = Handler.createRequest(incomeHTTPRequest);
         //then
         assertEquals("127.0.0.1", request.getHost());
-        assertEquals("3000", request.getPort());
+        assertEquals(3000, request.getPort());
         assertEquals(HttpMethodType.GET, request.getMethodType());
         assertEquals("/JavaLogo.png", request.getResource());
         assertEquals("document", request.getHeader("Sec-Fetch-Dest"));

@@ -153,7 +153,7 @@ class Handler {
         }
     }
 
-    static HtREtpRequest createRequest(String requestString) {
+    static HttpRequest createRequest(String requestString) {
         HttpRequest request = new HttpRequest();
         String[] requestLines = requestString.split("\n");
         for (int i = 0; i < requestLines.length; i++) {

@@ -26,7 +26,7 @@ class ServerTest {
     void givenServerWithNonExistingRootDirectory_whenNotStarted_thenCorrect() throws InterruptedException {
         Server server = new Server(3000, "nonExistingRootDirectory");
         ExecutorService executorsPool = Executors.newFixedThreadPool(1);
-        Future serverTask = executorsPool.submit(()->server.start());
+        Future serverTask = executorsPool.submit(server::start);
         Thread.sleep(500);
         assertTrue(serverTask.isDone());
     }

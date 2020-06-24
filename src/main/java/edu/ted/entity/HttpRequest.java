@@ -8,7 +8,7 @@ public class HttpRequest {
     private String resource;
     private String host;
     private int port;
-    private Map<String, String> headers = new HashMap<>();
+    private final Map<String, String> headers = new HashMap<>();
 
     public HttpMethodType getMethodType() {
         return methodType;

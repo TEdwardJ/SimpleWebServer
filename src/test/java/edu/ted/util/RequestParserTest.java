@@ -2,7 +2,6 @@ package edu.ted.util;
 
 import edu.ted.entity.HttpMethodType;
 import edu.ted.entity.HttpRequest;
-import edu.ted.server.Handler;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;

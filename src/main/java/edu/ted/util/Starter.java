@@ -1,4 +1,6 @@
-package edu.ted.server;
+package edu.ted.util;
+
+import edu.ted.server.Server;
 
 public class Starter {
 

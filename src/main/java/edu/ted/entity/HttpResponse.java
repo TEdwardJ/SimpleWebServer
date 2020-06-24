@@ -1,18 +1,22 @@
-package edu.ted.server;
+package edu.ted.entity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class HttpResponse {
 
-    private int status;
-    private String reasonPhrase;
-
     private HttpResponseCode responseCode;
 
     private byte[] binaryBody;
 
     private final Map<String, String> headers = new LinkedHashMap<>();
+
+    public HttpResponse() {
+    }
+
+    public HttpResponse(HttpResponseCode responseCode) {
+        this.responseCode = responseCode;
+    }
 
     public byte[] getBinaryBody() {
         return binaryBody;

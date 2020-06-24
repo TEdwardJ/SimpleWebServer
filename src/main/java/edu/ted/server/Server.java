@@ -6,13 +6,17 @@ import java.net.Socket;
 
 public class Server {
 
-    private final int port;
+    private int port = 3000;
     private final String rootDirectory;
 
     private boolean toBeShutDowned = false;
 
     public Server(int port, String rootDirectory) {
         this.port = port;
+        this.rootDirectory = rootDirectory;
+    }
+
+    public Server(String rootDirectory) {
         this.rootDirectory = rootDirectory;
     }
 

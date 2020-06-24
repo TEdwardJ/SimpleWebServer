@@ -1,4 +1,4 @@
-package edu.ted.server;
+package edu.ted.entity;
 
 public enum HttpMethodType {
     GET

@@ -1,4 +1,4 @@
-package edu.ted.server;
+package edu.ted.entity;
 
 public enum HttpResponseCode {
 
@@ -21,5 +21,11 @@ public enum HttpResponseCode {
 
     public String getReasonPhrase() {
         return reasonPhrase;
+    }
+
+
+    @Override
+    public String toString() {
+        return "HTTP/1.0 " + code + " " + reasonPhrase;
     }
 }

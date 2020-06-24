@@ -22,7 +22,7 @@ public class ServerITest {
     @Test
     public void givenServerSendRequest_whenRequestedResult_thenCorrect() throws IOException, InterruptedException {
         List<String> linesList = Files.readAllLines(new File(rootDirectory + "/index.html").toPath());
-        new Thread(() -> server.start()).start();
+        new Thread(server::start).start();
         Thread.sleep(500);
         Request request = new Request.Builder().url("http://127.0.0.1:3000").build();
         Response response = client.newCall(request).execute();

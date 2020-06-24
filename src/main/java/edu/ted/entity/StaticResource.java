@@ -1,12 +1,20 @@
-package edu.ted.server;
+package edu.ted.entity;
 
 import java.io.File;
 
-public class StaticResource extends AbstractResource {
-
+public class StaticResource {
+    private String resourceType;
     private File resource;
 
     private byte[] content;
+
+    public void setResourceType(String resourceType) {
+        this.resourceType = resourceType;
+    }
+
+    public String getResourceType() {
+        return resourceType;
+    }
 
     public File getResource() {
         return resource;
@@ -16,7 +24,6 @@ public class StaticResource extends AbstractResource {
         this.resource = resource;
     }
 
-    @Override
     public byte[] getResourceContent() {
         return content;
     }

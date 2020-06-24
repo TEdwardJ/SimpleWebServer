@@ -1,4 +1,4 @@
-package edu.ted.server;
+package edu.ted.entity;
 
 import java.util.HashMap;
 import java.util.Map;

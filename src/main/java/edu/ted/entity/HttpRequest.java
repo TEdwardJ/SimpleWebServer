@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HttpRequest {
+    public static final String DEFAULT_HTTP_VERSION = "HTTP/1.0";
+
     private HttpMethodType methodType;
+    private String version = DEFAULT_HTTP_VERSION;
     private String resource;
     private String host;
     private int port;
@@ -48,5 +51,13 @@ public class HttpRequest {
 
     public void setHeader(String key, String value) {
         headers.put(key, value);
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 }

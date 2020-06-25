@@ -1,6 +1,8 @@
 package edu.ted.io;
 
+import edu.ted.entity.HttpResponseCode;
 import edu.ted.entity.StaticResource;
+import edu.ted.exception.ServerException;
 
 import java.io.*;
 
@@ -45,7 +47,7 @@ public final class ResourceReader {
         File resourceFile = new File(rootDirectory + resolvedResourcelocation);
 
         if (!resourceFile.exists()) {
-            return null;
+            throw new ServerException(HttpResponseCode.NOT_FOUND);
         }
         StaticResource resource = new StaticResource();
         resource.setResourceType(resolveResourceType(resolvedResourcelocation));

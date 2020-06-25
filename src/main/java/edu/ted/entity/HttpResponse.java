@@ -11,11 +11,18 @@ public class HttpResponse {
 
     private final Map<String, String> headers = new LinkedHashMap<>();
 
+    private String version;
+
     public HttpResponse() {
     }
 
     public HttpResponse(HttpResponseCode responseCode) {
         this.responseCode = responseCode;
+    }
+
+    public HttpResponse(HttpResponseCode responseCode, String version) {
+        this.responseCode = responseCode;
+        this.version = version;
     }
 
     public byte[] getBinaryBody() {
@@ -54,5 +61,13 @@ public class HttpResponse {
 
     public void setResponseCode(HttpResponseCode responseCode) {
         this.responseCode = responseCode;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 }

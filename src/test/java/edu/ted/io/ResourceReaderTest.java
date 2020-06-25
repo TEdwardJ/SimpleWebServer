@@ -1,6 +1,8 @@
 package edu.ted.io;
 
+import edu.ted.entity.HttpResponseCode;
 import edu.ted.entity.StaticResource;
+import edu.ted.exception.ServerException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -67,13 +69,13 @@ class ResourceReaderTest {
     void givenNonExistingFileAndGetResource_whenReturnsNull_thenCorrect() {
         ///given
         //when
-        StaticResource resource = ResourceReader.getResource("testFile2.html", "");
+        ServerException thrown = assertThrows(ServerException.class,()->ResourceReader.getResource("testFile2.html", ""));
         //then
-        assertNull(resource);
+        assertEquals(HttpResponseCode.NOT_FOUND, thrown.getResponseCode());
     }
 
     @Test
-    void givenNonExistingFile_thenReadStaticResource_whenFetchedNull_thenCorrect() throws IOException {
+    void givenNonExistingFile_thenReadStaticResource_whenFetchedNull_thenCorrect() {
         File testFile = new File("testFile0.html");
         byte[] fileBytes = ResourceReader.readStaticResource(testFile);
         assertNull(fileBytes);

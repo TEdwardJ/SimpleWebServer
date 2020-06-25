@@ -62,7 +62,7 @@ class HandlerTest {
         handler.handleSocketEvent();
         String outputString = mockOutputStream.toString();
         //then
-        assertTrue(outputString.contains("HTTP/1.0 200 OK"));
+        assertTrue(outputString.contains("HTTP/1.1 200 OK"));
         assertTrue(outputString.contains("Content-Type: text/html; charset=utf-8"));
         assertTrue(outputString.contains("Content-Length: 12"));
         assertTrue(outputString.contains(TEST_CONTENT_STRING));
@@ -81,7 +81,7 @@ class HandlerTest {
         handler.handleSocketEvent();
         String outputString = mockOutputStream.toString();
         //then
-        assertTrue(outputString.contains("HTTP/1.0 405 Method Not Allowed"));
+        assertTrue(outputString.contains("HTTP/1.1 405 Method Not Allowed"));
     }
 
 
@@ -98,29 +98,24 @@ class HandlerTest {
         handler.handleSocketEvent();
         String outputString = mockOutputStream.toString();
         //then
-        assertTrue(outputString.contains("HTTP/1.0 404 Not Found"));
+        assertTrue(outputString.contains("HTTP/1.1 404 Not Found"));
     }
-
-
 
     @Test
-    void givenPreparedResponseAndPushAnswer_whenResponseSentAndHasCorrectFields_thenCorrect() throws IOException {
-        //given
-        HttpResponse response = new HttpResponse();
-        response.setResponseCode(HttpResponseCode.OK);
-        response.setHeader("Content-Type", "text/html; charset=utf-8");
-        response.setBinaryBody("<body>Hello!!!</body>".getBytes());
-        response.setHeader("Content-Length", Integer.toString("<body>Hello!!!</body>".getBytes().length));
-        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    void givenRootDirectoryAndSendBadRequest_when400_thenCorrect() throws IOException {
+        ///given
+        Socket socket = mock(Socket.class);
+        ByteArrayOutputStream mockOutputStream = new ByteArrayOutputStream();
+        when(socket.getInputStream()).thenReturn(new ByteArrayInputStream("HogWash".getBytes()));
+        when(socket.getOutputStream()).thenReturn(mockOutputStream);
         //when
-        Handler.sendResponse(out, response);
-        String outcomeHTTPResponse = "HTTP/1.0 200 OK\n" +
-                "Content-Type: text/html; charset=utf-8\n" +
-                "Content-Length: 21\n\n" +
-                "<body>Hello!!!</body>";
+        Handler handler = new Handler(socket, "testWebApp");
+        handler.handleSocketEvent();
+        String outputString = mockOutputStream.toString();
         //then
-        assertEquals(outcomeHTTPResponse, out.toString());
+        assertTrue(outputString.contains("HTTP/1.0 400 Bad Request"));
     }
+
 
     @Test
     void givenPreparedRequestAndProcess_whenValidResponse_thenCorrect() {

@@ -13,6 +13,7 @@ import static edu.ted.entity.HttpResponseCode.*;
 
 public
 class Handler {
+
     private final Socket socket;
     private final String rootDirectory;
 

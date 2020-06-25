@@ -1,17 +1,14 @@
 package edu.ted.io;
 
-import edu.ted.entity.HttpRequest;
 import edu.ted.entity.HttpResponse;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
-import java.util.Optional;
+
+import static edu.ted.util.Constants.EOL;
 
 public class ResponseWriter {
-
-
-    private static final String EOL = "\n";
 
     public static void sendResponse(OutputStream out, HttpResponse response) throws IOException {
         StringBuilder headerText = new StringBuilder();

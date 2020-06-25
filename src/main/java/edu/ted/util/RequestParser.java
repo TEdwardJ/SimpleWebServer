@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static edu.ted.util.Constants.EOL;
+
 public final class RequestParser {
 
     private static final Pattern METHOD_AND_URL_PATTERN = Pattern.compile("^(?<method>[A-Z]+) (?<resource>[^ ]+) (?<version>[^ ]+)");
 
-    static final String EOL = "\n";
 
     private RequestParser() {
         throw new AssertionError("No com.study.util.RequestParser instances for you!");

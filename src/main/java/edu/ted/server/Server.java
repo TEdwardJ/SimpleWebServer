@@ -50,6 +50,6 @@ public class Server {
     }
 
     private void startHandler(Socket clientSocket) {
-        new Thread(() -> new Handler(clientSocket, rootDirectory).handleSocketEvent()).start();
+        new Thread(new Handler(clientSocket, rootDirectory)).start();
     }
 }

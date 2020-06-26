@@ -12,7 +12,7 @@ import java.net.Socket;
 import static edu.ted.entity.HttpResponseCode.*;
 
 public
-class Handler {
+class Handler implements Runnable {
 
     private final Socket socket;
     private final String rootDirectory;
@@ -59,5 +59,10 @@ class Handler {
         } catch (Exception e) {
             return new HttpResponse(INTERNAL_ERROR, request.getVersion());
         }
+    }
+
+    @Override
+    public void run() {
+        handleSocketEvent();
     }
 }

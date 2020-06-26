@@ -1,4 +1,4 @@
-package edu.ted.util;
+package edu.ted;
 
 import edu.ted.server.Server;
 

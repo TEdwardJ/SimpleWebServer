@@ -6,10 +6,12 @@ import java.net.Socket;
 
 public class Server {
 
-    private int port = 3000;
+    private final static int  DEFAULT_PORT = 3000;
+
+    private int port;
     private final String rootDirectory;
 
-    private boolean toBeShutDowned = false;
+    volatile private boolean toBeShutDowned = false;
 
     public Server(int port, String rootDirectory) {
         this.port = port;
@@ -17,7 +19,7 @@ public class Server {
     }
 
     public Server(String rootDirectory) {
-        this.rootDirectory = rootDirectory;
+        this(DEFAULT_PORT, rootDirectory);
     }
 
     public boolean isToBeShutDowned() {

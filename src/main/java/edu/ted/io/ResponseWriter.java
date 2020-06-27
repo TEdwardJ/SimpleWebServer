@@ -15,7 +15,7 @@ public class ResponseWriter {
         headerText
                 .append(response.getVersion())
                 .append(" ")
-                .append(response.getResponseCode())
+                .append(response.getResponseCode().getAsString())
                 .append(EOL);
         for (Map.Entry<String, String> header : response.getHeaders().entrySet()) {
             headerText

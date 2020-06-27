@@ -9,9 +9,9 @@ public enum HttpResponseCode {
     INTERNAL_ERROR(500, "Internal Server Error");
 
     private final int code;
-    private String reasonPhrase;
+    private final String reasonPhrase;
 
-    private HttpResponseCode(int code, String reasonPhrase) {
+    HttpResponseCode(int code, String reasonPhrase) {
         this.code = code;
         this.reasonPhrase = reasonPhrase;
     }
@@ -24,6 +24,9 @@ public enum HttpResponseCode {
         return reasonPhrase;
     }
 
+    public String getAsString(){
+        return code + " " + reasonPhrase;
+    }
 
     @Override
     public String toString() {

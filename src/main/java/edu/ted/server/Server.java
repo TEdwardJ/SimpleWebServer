@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class Server {
 
-    private final static int  DEFAULT_PORT = 3000;
+    private final static int DEFAULT_PORT = 3000;
 
     private int port;
     private final String rootDirectory;
